@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <!-- CSS Stil Dosyasına Bağlantı -->
+    {% load static %}
+<link rel="stylesheet" href="{% static 'films/styles.css' %}">
+{% load static %}
+<link rel="stylesheet" href="{% static 'films/mp2style.css' %}">
+    
+   
+</head>
+<body>
+   <main class="main-content">
+    <!-- Ana Sayfa Başlığı -->
+    <header>
+        <a href="{% url 'index' %}">  <h1 style="display: inline;">Altın<span    style="color: #FFD700;">Sinema</span></h1></a>
+        
+        <div class="search-bar">
+              <input type="text" placeholder="Search for movies or videos...">
+              <button>Search</button>
+        </div>
+          
+          <div class="user-menu">
+              <a href="#">Login</a> | <a href="#">Sign Up</a>
+          </div>
+          
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Anasayfa</a></li>
+            <li><a href="#">Film Arşivi</a></li>
+            <li><a href="#">2023 Filmleri</a></li>
+            <li><a href="#">2024 Filmleri</a></li>
+            <li><a href="#">Diziler</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Hakkımızda</a></li>
+         
+        </ul>
+    </nav>
+
+    <!-- Ana İçerik Alanı -->
+    <div class="video">
+        <iframe class="movieframe" src="{{ movie.iframe_url }}" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+     </div>
+
+     <div class="movie-container">
+        <div class="movie-poster">
+            <img src="{{ movie.image_url }}" alt="{{ movie.title }} Posteri">
+            <button class="add-btn">+ Ekle</button>
+            <div class="share-buttons">
+                <button>Facebook'ta Paylaş</button>
+                <button>Twitter'da Paylaş</button>
+            </div>
+        </div>
+    
+        <div class="movie-details">
+            <div class="movie-title">
+                <h1>{{ movie.title }} – {{ movie.original_title }}</h1>
+                <span class="rating">{{ movie.imdb_score }} <span class="imdb">IMDb Puanı</span></span>
+            </div>
+            <ul>
+                <li>Yapım Yılı: {{ movie.release_year }}</li>
+                <li>Ülke: {{ movie.country }}</li>
+                <li>Yapım Şirketi: {{ movie.production_company }}</li>
+                <li>Film Süresi: {{ movie.duration }} dakika</li>
+            </ul>
+    
+            <div class="category">
+                <p>Kategori: <span>{{ movie.category }}</span></p>
+            </div>
+    
+            <div class="credits">
+                <p>Yönetmen: {{ movie.director }}</p>
+                <p>Senaryo: {{ movie.screenwriters }}</p>
+                <p>Oyuncular: {{ movie.actors }}</p>
+                <p>Ödüller: {{ movie.awards }}</p>
+            </div>
+    
+            <div class="description">
+                <p>{{ movie.description }}</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    
+  
+    <footer>
+        <p> &copy; altinsinema.com Tüm Hakları Saklıdır.</p>
+        <ul style = "  list-style-type: none;">
+            <li><a href="#">Gizlilik Politikası</a></li>
+            <li><a href="#">Kullanım Şartları</a></li>
+        </ul>
+       
+
+        <a href="index.html" style="display: inline;">   <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: inline-block;">Altın <span style="color: #FFD700;">Sinema</span></h1></a><p style="max-width: 200px ; text-indent: 5% ;">Telif Hakkı:
+
+            altinsinema.com, 5651 sayılı yasada tanımlanan yer sağlayıcı olarak hizmet vermektedir. Telif hakkına konu olan eserlerin yasal olmayan bir biçimde paylaşıldığını ve yasal haklarının çiğnendiğini düşünen hak sahipleri veya meslek birlikleri, Hak İhlali Bildirimi sayfasından bize ulaşabilirler.</p>
+    </footer>
+</main>
+</body>
+</html>

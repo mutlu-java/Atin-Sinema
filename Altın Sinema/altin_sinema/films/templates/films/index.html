@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+   
+
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'films/styles.css' %}">
+
+
+</head>
+<body>
+   
+    <header>
+       <a href="{% url 'index' %}">  <h1 style="display: inline;">Altın<span    style="color: #f1c40f;">Sinema</span></h1></a>
+        
+      <div class="search-bar">
+            <input type="text" placeholder="Search for movies or videos...">
+            <button>Search</button>
+      </div>
+        
+        <div class="user-menu">
+            <a href="#">Login</a> | <a href="#">Sign Up</a>
+        </div>
+        
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Anasayfa</a></li>
+            <li><a href="#">Film Arşivi</a></li>
+            <li><a href="#">2023 Filmleri</a></li>
+            <li><a href="#">2024 Filmleri</a></li>
+            <li><a href="#">Diziler</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Hakkımızda</a></li>
+         
+        </ul>
+    </nav>
+   
+   <div class="container">
+
+  
+
+        <section class="movie-list">
+            {% for movie in movies %}
+            <div class="movie-item">
+                <a href="{% url 'movie_detail' movie.id %}">
+                    <img src="{{ movie.image_url }}" alt="{{ movie.title }}">
+                    <p>{{ movie.title }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </section>
+    </section>
+    
+  
+   
+    <section class="kategori-sidebar">
+        <h3>Kategoriler</h3>
+        <div class="button-group">
+            <button class="film-button">Film</button>
+            <button class="dizi-button">Dizi</button>
+        </div>
+        <ul class="category-list">
+            <li>Aile</li>
+            <li>Aksiyon</li>
+            <li>Animasyon</li>
+            <li>Belgesel</li>
+            <li>Bilim Kurgu</li>
+            <li>Biyografi</li>
+            <li>Dram</li>
+            
+            <li>Fantastik</li>
+            <li>Gerilim</li>
+            <li>Gizem</li>
+            
+            <li>Kısa Metrajlı</li>
+            <li>Komedi</li>
+            <li>Korku</li>
+            <li>Macera</li>
+            
+            <li>Polisiye</li>
+        </ul>
+    </section>
+    
+  
+</div>
+    <div class="pagination">
+        <a href="#">&laquo; Previous</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Next &raquo;</a>
+    </div>
+
+    <footer>
+        
+        <ul style="list-style-type: none;">
+            <li ><a  href="#">Gizlilik Politikası</a></li>
+            <li><a href="#">Kullanım Şartları</a></li>
+            <p>&copy; 2024 Muhammet Ali Mutlu. Tüm Hakları Saklıdır.  </p>
+        </ul>
+    </footer>
+
+</body>
+</html>
