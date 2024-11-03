@@ -84,7 +84,7 @@ background-color:#111;  }
 .movie-list {
     background-color: #333;
     display: grid;
-    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
     gap: 20px;
     padding: 20px;
     
@@ -237,10 +237,10 @@ background-color:#111;  }
 
 
 
-
+/*
 .pagination {
     text-align: center;
-   /* margin:;*/
+   
     background-color: #333;
     
 }
@@ -259,7 +259,7 @@ background-color:#111;  }
 
 .pagination a:hover {
     background-color: #ff5400;
-}
+}*/
 .user-menu {
     float: right;
     margin-right: 20px;

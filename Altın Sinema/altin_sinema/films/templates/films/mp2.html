@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>{{movie.title}} </title>
     <!-- CSS Stil Dosyasına Bağlantı -->
     {% load static %}
 <link rel="stylesheet" href="{% static 'films/styles.css' %}">
 {% load static %}
 <link rel="stylesheet" href="{% static 'films/mp2style.css' %}">
-    
-   
+
 </head>
 <body>
    <main class="main-content">
-    <!-- Ana Sayfa Başlığı -->
+   
     <header>
         <a href="{% url 'index' %}">  <h1 style="display: inline;">Altın<span    style="color: #FFD700;">Sinema</span></h1></a>
         
@@ -92,11 +91,11 @@
 
     
   
-    <footer>
+    <footer>   
         <p> &copy; altinsinema.com Tüm Hakları Saklıdır.</p>
-        <ul style = "  list-style-type: none;">
-            <li><a href="#">Gizlilik Politikası</a></li>
-            <li><a href="#">Kullanım Şartları</a></li>
+        <ul style = "list-style-type: none;">
+            <li style = "display:inline" ><a href="#">Gizlilik Politikası</a></li>
+            <li style = "display:inline" ><a href="#">Kullanım Şartları</a></li>
         </ul>
        
 

@@ -34,7 +34,7 @@
             <li><a href="#">2023 Filmleri</a></li>
             <li><a href="#">2024 Filmleri</a></li>
             <li><a href="#">Diziler</a></li>
-            <li><a href="#">Blog</a></li>
+                         <li><a href="#">Blog</a></li>
             <li><a href="#">Hakkımızda</a></li>
          
         </ul>
@@ -44,7 +44,7 @@
 
   
 
-        <section class="movie-list">
+      <!-- <section class="movie-list">
             {% for movie in movies %}
             <div class="movie-item">
                 <a href="{% url 'movie_detail' movie.id %}">
@@ -54,6 +54,16 @@
             </div>
             {% endfor %}
         </section>
+    </section>-->
+    <section class="movie-list">
+        {% for movie in sayfa_objesi %}
+            <div class="movie-item">
+                <a href="{% url 'movie_detail' movie.id %}">
+                    <img src="{{ movie.image_url }}" alt="{{ movie.title }}">
+                    <p>{{ movie.title }}</p>
+                </a>
+            </div>
+        {% endfor %}
     </section>
     
   
@@ -88,13 +98,35 @@
     
   
 </div>
-    <div class="pagination">
+
+<div class="pagination">
+    {% if sayfa_objesi.has_previous %}
+        <a href="?sayfa=1">İlk</a>
+        <a href="?sayfa={{ sayfa_objesi.previous_page_number }}">Önceki</a>
+    {% endif %}
+
+    {% for numara in sayfa_numaralari %}
+        {% if numara == sayfa_objesi.number %}
+            <span>{{ numara }}</span>
+        {% else %}
+            <a href="?sayfa={{ numara }}">{{ numara }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if sayfa_objesi.has_next %}
+        <a href="?sayfa={{ sayfa_objesi.next_page_number }}">Sonraki</a>
+        <a href="?sayfa={{ sayfa_objesi.paginator.num_pages }}">Son</a>
+    {% endif %}
+</div>
+
+<!--
+  <div class="pagination">
         <a href="#">&laquo; Previous</a>
         <a href="#">1</a>
         <a href="#">2</a>
         <a href="#">3</a>
         <a href="#">Next &raquo;</a>
-    </div>
+    </div> -->
 
     <footer>
         

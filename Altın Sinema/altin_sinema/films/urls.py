@@ -7,4 +7,6 @@ urlpatterns = [
     path('movies/<int:movie_id>/', views.movie_detail, name='movie_detail'),  # Film detay sayfası için
      path('', views.index, name='index'),  # index.html için
     path('mp2/', views.mp2, name='mp2'),   # mp2.html için
+      
+    path('<int:movie_id>/', views.movie_detail, name='movie_detail'),
 ]
