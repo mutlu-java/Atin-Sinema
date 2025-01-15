@@ -11,13 +11,28 @@
     font-family: Arial, sans-serif;
 }
 */
+:root {
+    --primary-color: #222731;
+    --main-body-color:#1E2129;
+    --secondary-color:#171A21 ;
+    --light:#2D3039;
+    --text-color: #DA870D;
+    --background-color: #191B22;
+    --footer-color:#1A1C23;
+  }
+  
+iframe {
+    width: 100% !important;
+    height: 500px !important;
+  }
+  
 .movie-container {
     display: flex;
     gap: 20px;
     color: white;
-    background-color: #222;
+    background-color: var(--main-body-color );
     padding: 20px;
-    
+    height: auto;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto; /* Ortalamak için */
@@ -77,11 +92,24 @@
 }
 
 .rating {
-    background-color: #f1c40f;
-    color: black;
+    /* background-color: #f1c40f; */
+    color: white;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 3px;
+    border: 2px solid #f1c40f;
     font-weight: bold;
+}
+.movie-details-ul{
+    list-style: none;
+    padding: 0;
+
+}
+.movie-details-ul li{
+    margin-left: 10px;
+    float: left;  
+}.movie-details-ul li:first-child{
+    margin-left: 0px;
+  
 }
 
 .category, .credits, .description, ul {
@@ -103,7 +131,7 @@ ul {
 }
 
 .description {
-    margin-top: 15px;
-    font-size: 10px;
-    line-height: 1.6;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #ccc;
 }

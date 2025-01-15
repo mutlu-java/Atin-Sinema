@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #222731;
+    --main-body-color:#1E2129;
+    --secondary-color:#171A21 ;
+    --light:#2D3039;
+    --text-color: #DA870D;
+    --background-color: #191B22;
+    --footer-color:#1A1C23;
+  }
+  
 * {
  box-sizing: border-box;
  margin:0%;
@@ -26,11 +36,14 @@ body {
 
 
 header {
-    
+  
+    display: flex;
+    justify-content: space-between;
+
     padding: 15px 0px 15px 0px;
-    /*background-color: #333;*/
-    background-color: #333;
-    overflow: hidden;
+    
+    background-color: var(--primary-color);
+    overflow: visible;
 }
 header h1{
     margin-left: 10px;
@@ -41,7 +54,8 @@ a{
     text-decoration: dashed;
 }
 nav {
-    background-color: #222;
+   
+    background-color: var(--secondary-color);
     
     box-sizing: border-box;
     display: flex;
@@ -58,8 +72,9 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 0px;
-    background-color: #222;
+    /* background-color: #222; */
 }
+
 
 nav a {
     display: block;
@@ -69,8 +84,8 @@ nav a {
 }
 
   
-  nav a:hover {
-background-color:#111;  }
+nav a:hover {
+   color: var(--text-color);  }
   
 .container{
     display: grid;
@@ -79,12 +94,12 @@ background-color:#111;  }
   padding: 20px;
 
   margin: 0 auto;
-  background-color: #333;
+  background-color: #1E2129;
 }
 .movie-list {
-    background-color: #333;
+    background-color: #1E2129;
     display: grid;
-    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
     gap: 20px;
     padding: 20px;
     
@@ -120,7 +135,7 @@ background-color:#111;  }
 .kategori-sidebar {
     
     padding: 5px;
-    background-color: #2d2d2d; /* Background for the sidebar */
+    background-color:var(--main-body-color); /* Background for the sidebar */
     color: white;
     border-radius: 8px;
 }
@@ -156,7 +171,7 @@ background-color:#111;  }
 }
 
 .category-list {
-    background-color: #2d2d2d;
+  
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
     gap: 5px; /* Space between items */
@@ -170,7 +185,7 @@ background-color:#111;  }
 
 .category-list li {
     
-    background-color: #444;
+    background-color: var(--light);
     color: white;
     padding: 5px;
     text-align: center;
@@ -188,68 +203,85 @@ background-color:#111;  }
     background-color: #555; /* Hover effect for categories */
 }
 
-/*
-.kategori-sidebar ul li {
-    list-style: none;
-    padding: 10px 0;  
-    background-color: #e04000 ;
-    
-}
-  
-  .kategori-sidebar ul li a {
-    text-decoration: none;  
-    color: #fff;            
-    font-size: 16px;        
-    
-  }
-  
-  .kategori-sidebar ul li a:hover {
-    color: #ffcc00;  
-  }
-  */
+
 
 .search-bar {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
+  position: relative; 
+  display: flex;
+  justify-content: center;
+  
+  background-color: #dce1eb; /* Açık gri-mavi ton */
+  border-radius: 25px; /* Yuvarlatılmış köşeler */
+  padding: 5px 15px;
+  min-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  overflow: visible;
+    
 }
 
 .search-bar input {
+    background: transparent;
     padding: 10px;
-    width: 300px;
-    border: none;
     border-radius: 5px;
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #333;
 }
 
 .search-bar button {
-    padding: 10px 20px;
-    background-color: #f1c40f;
+
     border: none;
-    border-radius: 5px;
-    color: white;
-    margin-left: 10px;
+    background: none;
     cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.search-bar button:hover {
-    background-color: #e04000;
+.search-bar button svg {
+    color: #555;
+    font-size: 20px;
+}
+.search-bar button svg:hover {
+    color: black;
+    
+}
+
+.search-results {
+    position : absolute;
+    top:100%;
+    background-color:var(--footer-color);
+    display: block;
+    overflow: auto;
+    
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    
 }
 
 
 
-/*
+
+
+
+
 .pagination {
     text-align: center;
    
-    background-color: #333;
+    background-color: var(--main-body-color);
     
 }
-.pagination ul{
-    list-style-type: none;
-}
+
+
 .pagination a {
-    margin: 0 10px;
-    padding: 10px 20px;
+    
+    gap: 10px;
+    margin: 0 5px;
+    padding: 10px 10px;
     margin: 5px;
     background-color: #222;
     color: white;
@@ -257,9 +289,7 @@ background-color:#111;  }
     border-radius: 5px;
 }
 
-.pagination a:hover {
-    background-color: #ff5400;
-}*/
+
 .user-menu {
     float: right;
     margin-right: 20px;
@@ -280,7 +310,10 @@ background-color:#111;  }
 }
 
 footer {
-    background-color: #333;
+    display: block;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: var(--footer-color);
     color: #888;
     font-size: 14px;
     padding: 15px;
@@ -306,104 +339,7 @@ footer {
     height: auto;
     aspect-ratio: 8/3.5; /* Videonun oranını korur */
 }
-/*
-.movie-container {
-    display: flex;
-    gap: 20px;
-    color: white;
-    background-color: #1b1b1b;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-}
-
-.movie-poster {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.movie-poster img {
-    width: 200px;
-    border-radius: 10px;
-}
-
-.add-btn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #4f4f4f;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-.share-buttons button {
-    display: block;
-    width: 100%;
-    background-color: #3b5998;
-    color: white;
-    padding: 8px;
-    margin-top: 5px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-}
-
-.share-buttons button:nth-child(2) {
-    background-color: #1DA1F2;
-}
-
-.movie-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.movie-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.movie-title h1 {
-    font-size: 24px;
-    margin: 0;
-}
-
-.rating {
-    background-color: #f1c40f;
-    color: black;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.category, .credits, .description, ul {
-    margin-top: 10px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-.category span {
-    font-weight: bold;
-    color: #d35400;
-}
-
-.credits p {
-    margin: 5px 0;
-}
-
-.description {
-    margin-top: 15px;
-    font-size: 14px;
-    line-height: 1.6;
-}
-*/
-/* /*
+ /*
 Ekran genişliği 600px veya daha küçük olduğunda stil kuralları */
 @media (max-width: 600px) {
     .movie-list {
@@ -445,29 +381,20 @@ Ekran genişliği 600px veya daha küçük olduğunda stil kuralları */
 
 /* Ekran genişliği 768px veya daha küçük olduğunda stil kuralları */
 @media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Tek sütun düzeni */
+    }
     .movie-list {
         margin: 0px 0px; /* Kenar boşluklarını küçült */
-        grid-template-columns:auto auto auto   ; /* Dört sütun düzeni */
+        grid-template-columns:1fr 1fr 1fr   ; /* Dört sütun düzeni */
     }
 
     .movie-item img { 
         max-width: 100%; /* Resimlerin genişliğini sınırlama */
     }
 
-    .search-bar {
-        flex-direction: column; /* Arama çubuğunu dikey olarak hizala */
-        align-items: center; /* Merkezi hizala */
-    }
-
-    .search-bar input {
-        width: 100%; /* Arama çubuğu genişliğini ekran genişliğine göre ayarla */
-        margin-bottom: 10px; /* Arama çubuğu ve düğme arasına boşluk ekle */
-    }
-
-    .search-bar button {
-        width: 100%; /* Düğme genişliğini ekran genişliğine göre ayarla */
-        margin:auto;
-    }
+    
+    
     .user-menu{
         
         margin-left: auto;
@@ -480,7 +407,9 @@ Ekran genişliği 600px veya daha küçük olduğunda stil kuralları */
        
     }
     
-    
+    .kategori-sidebar {
+        display: none; /* Kategori menüsünü gizle */
+    }
 }
 
 
