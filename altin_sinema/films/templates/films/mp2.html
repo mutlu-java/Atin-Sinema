@@ -21,11 +21,14 @@
         <a href="{% url 'movie_list' %}">  <h1 style="display: inline;">Altın<span    style="color: #FFD700;">Sinema</span></h1></a>
         
         <div class="search-bar">
-              <input type="text" placeholder="Search for movies or videos...">
-              <button><span class="material-symbols-outlined">
-search
-</span></button>
-        </div>
+            <input id="search-input" type="text" placeholder="Search for movies ...">
+            <button id="search-button">
+                <span class="material-symbols-outlined">
+                search
+                 </span>
+            </button>
+            <div id="search-results" class="search-results"></div>
+       </div>
           
           <div class="user-menu">
               <a href="#">Login</a> | <a href="#">Sign Up</a>
@@ -175,5 +178,45 @@ search
         Telif Hakkı: Bu sitede yer alan tüm materyaller, altinsinema.com'a aittir. İzinsiz kullanılamaz. altinsinema.com, 5651 sayılı yasada tanımlanan yer sağlayıcı olarak hizmet vermektedir. Telif hakkına konu olan eserlerin yasal olmayan bir biçimde paylaşıldığını ve yasal haklarının çiğnendiğini düşünen hak sahipleri veya meslek birlikleri, Hak İhlali Bildirimi sayfasından bize ulaşabilirler.
     </p>
 </footer>
+<script>
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value;
+    
+        if (query.length > 1) { // En az 2 karakter girildiğinde arama yap
+            fetch(`/search-movies/?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Arama sonuçlarını temizle
+                    searchResults.innerHTML = ''; // Temizleme
+                    const resultList = document.createElement('ul'); // `ul` elemanı oluştur
+        
+                    if (data.filmler.length > 0) {
+                        data.filmler.forEach(film => {
+                            const resultItem = document.createElement('li'); // `li` elemanı oluştur
+                            resultItem.classList.add('search-result');
+                            resultItem.innerHTML = `
+                                <img src="/media/${film.image}" alt="${film.title}" style="width: 50px; height: 75px; vertical-align: middle; ">
+                                <span style="font:8px;">${film.title} (${film.release_year}) - IMDB: ${film.imdb_score}</span>
+                            `;
+                            resultItem.addEventListener('click', () => {
+                                // Detay sayfasına yönlendir
+                                window.location.href = `/movies/${film.id}/`;
+                            });
+                            resultList.appendChild(resultItem); // `li` elemanını `ul` içine ekle
+                        });
+                        searchResults.appendChild(resultList); // `ul` elemanını `searchResults` içine ekle
+                    } else {
+                        searchResults.innerHTML = '<div>No results found</div>';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            searchResults.innerHTML = ''; // Arama kutusu boşsa sonuçları temizle
+        }
+    });
+</script>
 </body>
 </html>
